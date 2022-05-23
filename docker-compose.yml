@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+
+    test:
+        build:
+            context: test
+        ports:
+            - 85:80
+        volumes:
+            - ${TEST_APP_PATH}:/var/www/test-project
+
+    swagger_editor:
+        image: swaggerapi/swagger-editor
+        ports:
+            - 8082:8080
+        volumes:
+            - ${SWAGGER_EDITOR_DIR}:/tmp
+        environment:
+            SWAGGER_FILE: /tmp/openAPI.yaml
+
+
+
